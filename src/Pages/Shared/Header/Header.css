@@ -1,10 +1,13 @@
 .login{
-    background-color: #ecc308;
-    border-radius:20px;
+    background-color: #eca408;
+    border-radius:15px;
     padding: 5px 15px;
     padding-bottom: 8px;
 }
 .login:hover{
-     background-color: #eca408;
-     color: black;
+     background-color: #ecc308;
+}
+.nav:hover{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: 3px solid #eca408;
 }
