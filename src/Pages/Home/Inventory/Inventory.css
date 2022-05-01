@@ -1,0 +1,11 @@
+.caedItems{
+    border: 2px solid white;
+    padding: 15px;
+    border-radius: 10px;
+}
+.caedItems img{
+    border-radius: 10px;
+}
+.caedItems hr{
+    color: #eca408;
+}
