@@ -11,7 +11,7 @@ const Inventorys = () => {
     }, []);
     const sixinventorys = inventorys.slice(0, 6);
     return (
-        <div className='bg-dark'>
+        <div className=''>
             <h1 className='text-white text-center pt-5'><span className='sectionTitle'>warehouse Info</span></h1>
             <div className='row g-5 p-5'>
                     {
