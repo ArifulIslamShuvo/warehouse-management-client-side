@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Signup = () => {
@@ -9,6 +11,13 @@ const Signup = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [password, setPassword] = useState({ value: "", error: "" });
     const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
+    //--------------------------------------------
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
 
     //------------Email-handle-----------------//
 
@@ -38,6 +47,18 @@ const Signup = () => {
             setConfirmPassword({ value: "", error: "Password Mismatched" });
         }
     }
+    const handleRegister = event =>{
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        createUserWithEmailAndPassword(email, password);
+    }
+    if(user){
+        navigate('/home');
+        console.log(user);
+    }
 
 
     return (
@@ -45,7 +66,7 @@ const Signup = () => {
             <div className='form'>
                 <h2 className=" py-3 text-center">Sign up</h2>
                 <hr className='h-line' />
-                <form className='pb-4'>
+                <form onSubmit={handleRegister } className='pb-4'>
                     <div>
                         <div>
                             <input type='text' name='name' id='name' placeholder='Name' autoComplete='off' />
@@ -80,7 +101,6 @@ const Signup = () => {
                         <button type='submit' className='px-4 py-2 my-2 form-submit fs-6'>Sign up</button>
                         <span className='signup fs-4 ' onClick={() => navigate("/login")}>Login here <AiOutlineArrowRight /></span>
                     </div>
-                    <span className='signup fs-4'>Forget Password?</span>
                     <div className='horizontal-divider d-flex justify-content-center'>
                         <hr className='w-25 text-white' />
                         <p className='px-3 pt-1'>or</p>
