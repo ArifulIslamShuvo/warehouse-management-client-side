@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -6,6 +6,40 @@ import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState({ value: "", error: "" });
+    const [password, setPassword] = useState({ value: "", error: "" });
+    const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
+
+    //------------Email-handle-----------------//
+
+    const handleEmail = (emailInput) => {
+        if (/\S+@\S+\.\S+/.test(emailInput)) {
+            setEmail({ value: emailInput, error: "" });
+        }
+        else {
+            setEmail({ value: "", error: "Invalid email" });
+        }
+    }
+    //--------------handlePassword-------------//
+
+    const handlePassword = (passwordInput) => {
+        if (passwordInput.length < 6) {
+            setPassword({ value: '', error: "password min 6 character" });
+        } else {
+            setPassword({ value: passwordInput, error: "" });
+        }
+    }
+    //----------------handleConfirmPassword--------------//
+    const handleConfirmPassword = (confirmPasswordInput) => {
+        if (confirmPasswordInput === password.value) {
+            setConfirmPassword({ value: confirmPasswordInput, error: "" });
+        }
+        else {
+            setConfirmPassword({ value: "", error: "Password Mismatched" });
+        }
+    }
+
+
     return (
         <div className='container w-75 max-auto my-5'>
             <div className='form'>
@@ -19,16 +53,27 @@ const Signup = () => {
                     </div>
                     <div>
                         <div>
-                            <input type='text' name='email' id='email' placeholder='Email' autoComplete='off' />
+                            <input onBlur={(event) => handleEmail(event.target.value)} type='text' name='email' id='email' placeholder='Email' autoComplete='off' />
                         </div>
+                        {
+                            email?.error && <p style={{ color: 'red', textAlign: 'center', marginTop: '2px' }}>{email.error}</p>
+                        }
                     </div>
                     <div>
                         <div>
-                            <input type='password' name='password' id='password' placeholder='Password' autoComplete='off' />
+                            <input onBlur={(event) => handlePassword(event.target.value)} type='password' name='password' id='password' placeholder='Password' autoComplete='off' />
                         </div>
+                        {
+                            password?.error && <p style={{ color: 'red', textAlign: 'center', marginTop: '2px' }}>{password.error}</p>
+                        }
                     </div>
                     <div>
-                        <input type='password' name='confirmPassword' id='confirm-password' placeholder='Confirm-password' autoComplete='off'/>
+                        <div>
+                            <input onBlur={(event) => handleConfirmPassword(event.target.value)} type='password' name='confirmPassword' id='confirm-password' placeholder='Confirm-password' autoComplete='off' />
+                        </div>
+                        {
+                            confirmPassword?.error && <p style={{ color: 'red', textAlign: 'center', marginTop: '2px' }}>{confirmPassword.error}</p>
+                        }
                     </div>
                     {/* ----------------- */}
                     <div className='mx-auto d-flex justify-content-between align-items-center py-2 submit-section'>
@@ -42,7 +87,7 @@ const Signup = () => {
                         <hr className='w-25 text-white' />
                     </div>
                     <div className='mx-auto'>
-                        <p className="fs-4"><FcGoogle className='mb-1'/> <span className='signup'>Continue with Google </span></p>
+                        <p className="fs-4"><FcGoogle className='mb-1' /> <span className='signup'>Continue with Google </span></p>
                     </div>
                 </form>
             </div>

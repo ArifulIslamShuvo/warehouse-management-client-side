@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../Header/Header.css'
+import '../Header/Header.css';
+import { AiOutlineLogin } from "react-icons/ai";
 
 const Header = () => {
     return (
@@ -21,7 +22,7 @@ const Header = () => {
                             <Nav.Link className='fs-5 text-white' as={Link} to="inventorys"><span className='nav'>Inventorys</span></Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link as={Link} to="login" className='fs-4 text-white'><span className='login'>Login</span></Nav.Link>
+                            <Nav.Link as={Link} to="login" className='fs-5 text-white'><span className='login'>Login <AiOutlineLogin /></span></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
