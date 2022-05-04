@@ -1,13 +1,18 @@
 import React from 'react';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Login = () => {
     const navigate = useNavigate();
+    
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+//----------------------------------------------------//
+
     const [
         signInWithEmailAndPassword,
         user,
@@ -25,6 +30,9 @@ const Login = () => {
     if(user){
         navigate('/home')
     }
+    // if (user) {
+    //     navigate(from, { replace: true });
+    //   }
 
     return (
         <div className='container w-75 max-auto my-5'>
