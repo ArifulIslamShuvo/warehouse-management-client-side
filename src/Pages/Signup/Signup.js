@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
+import { FcGoogle, FcOk  } from "react-icons/fc";
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import toast from 'react-hot-toast';
 
 
 const Signup = () => {
@@ -57,9 +59,7 @@ const Signup = () => {
     }
     if(user){
         navigate('/home');
-        console.log(user);
     }
-
 
     return (
         <div className='container w-75 max-auto my-5'>

@@ -3,15 +3,35 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+
+//-------------signInWithEmailAndPassword--------------//
+    const handleLogin = event =>{
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        signInWithEmailAndPassword(email, password);
+    }
+    if(user){
+        navigate('/home')
+    }
+
     return (
         <div className='container w-75 max-auto my-5'>
             <div className='form'>
                 <h2 className=" py-3 text-center">Login</h2>
                 <hr className='h-line'/>
-                <form className='pb-4'>
+                <form onSubmit={handleLogin} className='pb-4'>
                     <div>
                         <div>
                             <input type='text' name='email' id='email' placeholder='Email' autoComplete='off' />
