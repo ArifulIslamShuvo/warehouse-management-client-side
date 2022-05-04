@@ -6,6 +6,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import Loading from '../Loading/Loading';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -13,6 +14,9 @@ const Header = () => {
     const logout = () => {
         signOut(auth);
     };
+    if(loading){
+        return<Loading></Loading>
+    }
 
     return (
         <div>

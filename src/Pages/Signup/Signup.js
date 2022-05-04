@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { FcGoogle, FcOk  } from "react-icons/fc";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { FcGoogle, FcOk } from "react-icons/fc";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import toast from 'react-hot-toast';
@@ -13,13 +13,15 @@ const Signup = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [password, setPassword] = useState({ value: "", error: "" });
     const [confirmPassword, setConfirmPassword] = useState({ value: "", error: "" });
-    //--------------------------------------------
+
+    //--------------------handlr-useCreateUserWithEmailAndPassword--------------//
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
+
 
     //------------Email-handle-----------------//
 
@@ -49,7 +51,7 @@ const Signup = () => {
             setConfirmPassword({ value: "", error: "Password Mismatched" });
         }
     }
-    const handleRegister = event =>{
+    const handleRegister = event => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
@@ -57,8 +59,30 @@ const Signup = () => {
 
         createUserWithEmailAndPassword(email, password);
     }
-    if(user){
+    //-----------------handle-signInWithGoogle------------------------
+
+    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    if (user || user1) {
         navigate('/home');
+    }
+
+    if (loading || loading1) {
+        return <Loading></Loading>
+    }
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    let errorMessage;
+    if (error1 || error) {
+        errorMessage = <div>
+            <p className="text-danger">Error: {error1.message}</p>
+        </div>
+        console.log(errorMessage);
     }
 
     return (
@@ -66,7 +90,7 @@ const Signup = () => {
             <div className='form'>
                 <h2 className=" py-3 text-center">Sign up</h2>
                 <hr className='h-line' />
-                <form onSubmit={handleRegister } className='pb-4'>
+                <form onSubmit={handleRegister} className='pb-4'>
                     <div>
                         <div>
                             <input type='text' name='name' id='name' placeholder='Name' autoComplete='off' />
@@ -96,7 +120,7 @@ const Signup = () => {
                             confirmPassword?.error && <p style={{ color: 'red', textAlign: 'center', marginTop: '2px' }}>{confirmPassword.error}</p>
                         }
                     </div>
-                    {/* ----------------- */}
+                    {errorMessage}
                     <div className='mx-auto d-flex justify-content-between align-items-center py-2 submit-section'>
                         <button type='submit' className='px-4 py-2 my-2 form-submit fs-6'>Sign up</button>
                         <span className='signup fs-4 ' onClick={() => navigate("/login")}>Login here <AiOutlineArrowRight /></span>
@@ -107,7 +131,7 @@ const Signup = () => {
                         <hr className='w-25 text-white' />
                     </div>
                     <div className='mx-auto'>
-                        <p className="fs-4"><FcGoogle className='mb-1' /> <span className='signup'>Continue with Google </span></p>
+                        <p className="fs-4" onClick={() => signInWithGoogle()}><FcGoogle className='mb-1' /> <span className='signup'>Continue with Google </span></p>
                     </div>
                 </form>
             </div>
