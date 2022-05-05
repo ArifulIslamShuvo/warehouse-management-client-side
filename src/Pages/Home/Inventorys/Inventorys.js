@@ -5,7 +5,7 @@ import '../Inventorys/Inventorys.css'
 const Inventorys = () => {
     const [inventorys, setInventorys] = useState([]);
     useEffect(() => {
-        fetch('inventory.json')
+        fetch('http://localhost:5000/inventory')
             .then(res => res.json())
             .then(data => setInventorys(data));
     }, []);
@@ -16,7 +16,7 @@ const Inventorys = () => {
             <div className='row g-5 p-5'>
                     {
                         sixinventorys.map(inventory => <Inventory inventory={inventory}
-                            key={inventory.id}
+                            key={inventory._id}
                         ></Inventory>)
                     }
             </div>
