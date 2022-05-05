@@ -26,6 +26,13 @@ const Update = () => {
                     <h5 className='text-white mx-3'>Supplier : {inventory?.supplierName}</h5>
                     <h5 className='text-white mx-3'>Quantity : {inventory?.quantity}</h5>
                     <hr />
+                    <div className='d-flex align-aitems-center justify-content-between w-100'>
+                        <button className='w-25 updateBtn'>Deliverd</button>
+                        <div className='d-flex align-aitems-center justify-content-between'>
+                            <input className='w-75 mx-2 rounded-3 border-0' type="text"  placeholder='Add quantity'/>
+                            <button className='w-75 updateBtn'>Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

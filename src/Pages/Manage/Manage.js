@@ -1,11 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../Inventory/Inventory.css'
 
-const Inventory = ({ inventory }) => {
-   const navigate = useNavigate();
-    const {_id, name, img, description, price, quantity, supplierName } = inventory;
-    // console.log();
+const Manage = ({ manage }) => {
+    const { _id, name, img, description, price, quantity, supplierName } = manage;
+
     return (
         <div className='col-lg-4 col-12 cards'>
             <div className='caedItems'>
@@ -17,12 +14,13 @@ const Inventory = ({ inventory }) => {
                 <h5 className='text-white mx-3'>Supplier : {supplierName}</h5>
                 <h5 className='text-white mx-3'>Quantity : {quantity}</h5>
                 <hr />
-                <div className='d-flex align-aitems-center justify-content-center w-100'>
-                <button className='w-50 updateBtn' onClick={() => navigate(`/home/${_id}`)}>Update</button>
+                <div className='d-flex align-aitems-center justify-content-between w-100'>
+                    <button className='w-50 mx-1 bg-danger updateBtn'>Delete</button>
+                    <button className='w-75 mx-1 updateBtn'>Add new items</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Inventory;
+export default Manage;
