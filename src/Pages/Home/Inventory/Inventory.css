@@ -9,3 +9,14 @@
 .caedItems hr{
     color: #eca408;
 }
+.updateBtn{
+    background-color: #eca408;
+    border-radius:15px;
+    padding: 5px 15px;
+    padding-bottom: 8px;
+    border: 0;
+    font-weight:bolder;
+}
+.updateBtn:hover{
+    background-color: #ecc308;
+}

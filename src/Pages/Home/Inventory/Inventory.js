@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Inventory/Inventory.css'
 
 const Inventory = ({ inventory }) => {
-    const { name, img, description, price, quantity, supplierName } = inventory;
+   const navigate = useNavigate();
+    const {_id, name, img, description, price, quantity, supplierName } = inventory;
     console.log();
     return (
         <div className='col-lg-4 col-12 cards'>
@@ -15,6 +17,9 @@ const Inventory = ({ inventory }) => {
                 <h5 className='text-white mx-3'>Supplier : {supplierName}</h5>
                 <h5 className='text-white mx-3'>Quantity : {quantity}</h5>
                 <hr />
+                <div className='d-flex align-aitems-center justify-content-center w-100'>
+                <button className='w-50 updateBtn' onClick={() => navigate(`/home/${_id}`)}>Update</button>
+                </div>
             </div>
         </div>
     );
