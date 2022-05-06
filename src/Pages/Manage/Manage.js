@@ -3,6 +3,13 @@ import React from 'react';
 const Manage = ({ manage }) => {
     const { _id, name, img, description, price, quantity, supplierName } = manage;
 
+    const DeletItem = id => {
+        const proceed = window.confirm("Are you sure You want to delete the data");
+        if(proceed){
+
+        }
+    }
+
     return (
         <div className='col-lg-4 col-12 cards'>
             <div className='caedItems'>
@@ -15,7 +22,7 @@ const Manage = ({ manage }) => {
                 <h5 className='text-white mx-3'>Quantity : {quantity}</h5>
                 <hr />
                 <div className='d-flex align-aitems-center justify-content-between w-100'>
-                    <button className='w-50 mx-1 bg-danger updateBtn'>Delete</button>
+                    <button className='w-50 mx-1 bg-danger updateBtn' onClick={()=> DeletItem(_id)}>Delete</button>
                     <button className='w-75 mx-1 updateBtn'>Add new items</button>
                 </div>
             </div>

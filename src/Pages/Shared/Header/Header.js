@@ -35,6 +35,7 @@ const Header = () => {
                             <Nav.Link className='fs-5 text-white' as={Link} to="inventorys"><span className='nav'>Inventorys</span></Nav.Link>
                             <Nav.Link className='fs-5 text-white' as={Link} to="about"><span className='nav'>About</span></Nav.Link>
                             <Nav.Link className='fs-5 text-white' as={Link} to="manageInventorys"><span className='nav'>Manage</span></Nav.Link>
+                            <Nav.Link className='fs-5 text-white' as={Link} to="additems"><span className='nav'>Add-Items</span></Nav.Link>
                         </Nav>
                         <Nav>{
                             !user?

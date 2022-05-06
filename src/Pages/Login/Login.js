@@ -55,7 +55,7 @@ const Login = () => {
 
 
     return (
-        <div className='container w-75 max-auto my-5'>
+        <div className='container w-75 my-5'>
             <div className='form'>
                 <h2 className=" py-3 text-center">Login</h2>
                 <hr className='h-line' />
