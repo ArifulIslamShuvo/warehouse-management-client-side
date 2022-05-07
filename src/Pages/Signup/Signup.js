@@ -66,14 +66,10 @@ const Signup = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    if (user || user1) {
-        navigate('/home');
-    }
-
     if (loading || loading1) {
         return <Loading></Loading>
     }
-    if (user) {
+    if (user || user1) {
         navigate(from, { replace: true });
     }
 

@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import About from './Pages/About/About';
 import AddItems from './Pages/AddItems/AddItems';
@@ -6,6 +7,8 @@ import Home from './Pages/Home/Home';
 import Update from './Pages/Home/Inventorys/Update/Update';
 import Login from './Pages/Login/Login';
 import ManageInventorys from './Pages/ManageInventorys/ManageInventorys';
+import MyItems from './Pages/MyItems/MyItems';
+import NotFound from './Pages/NotFound/NotFound';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Header from './Pages/Shared/Header/Header';
 import Signup from './Pages/Signup/Signup';
@@ -29,10 +32,24 @@ function App() {
             <About />
           </RequireAuth>
         }></Route>
-        <Route path='/manageInventorys' element={ <ManageInventorys /> }></Route>
-        <Route path='/additems' element={ <AddItems/> }></Route>
+        <Route path='/manageInventorys' element={
+          <RequireAuth>
+            <ManageInventorys />
+          </RequireAuth>
+        }></Route>
+        <Route path='/additems' element={
+          <RequireAuth>
+            <AddItems />
+          </RequireAuth>
+        }></Route>
+        <Route path='/myitems' element={
+          <RequireAuth>
+            <MyItems />
+          </RequireAuth>
+        }></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
-
+      <ToastContainer />
     </div>
   );
 }

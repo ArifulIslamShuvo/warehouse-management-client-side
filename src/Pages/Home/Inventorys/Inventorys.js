@@ -14,9 +14,9 @@ const Inventorys = () => {
     }, []);
     const sixinventorys = inventorys.slice(0, 6);
     return (
-        <div className=''>
+        <div className='mx-5'>
             <h1 className='text-white text-center pt-5'><span className='sectionTitle'>warehouse Info</span></h1>
-            <div className='row g-5 p-5'>
+            <div className='row g-5 p-3'>
                 {
                     sixinventorys.map(inventory => <Inventory inventory={inventory}
                         key={inventory._id}

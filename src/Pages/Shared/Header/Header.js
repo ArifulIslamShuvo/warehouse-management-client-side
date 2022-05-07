@@ -10,12 +10,12 @@ import Loading from '../Loading/Loading';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
-//-----------handled sign out-----------//
+    //-----------handled sign out-----------//
     const logout = () => {
         signOut(auth);
     };
-    if(loading){
-        return<Loading></Loading>
+    if (loading) {
+        return <Loading></Loading>
     }
 
     return (
@@ -32,17 +32,22 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
                             <Nav.Link className='fs-5 text-white' as={Link} to="home"><span className='nav'>Home</span></Nav.Link>
-                            <Nav.Link className='fs-5 text-white' as={Link} to="inventorys"><span className='nav'>Inventorys</span></Nav.Link>
+                            {/* <Nav.Link className='fs-5 text-white' as={Link} to="inventorys"><span className='nav'>Inventorys</span></Nav.Link> */}
                             <Nav.Link className='fs-5 text-white' as={Link} to="about"><span className='nav'>About</span></Nav.Link>
-                            <Nav.Link className='fs-5 text-white' as={Link} to="manageInventorys"><span className='nav'>Manage</span></Nav.Link>
-                            <Nav.Link className='fs-5 text-white' as={Link} to="additems"><span className='nav'>Add-Items</span></Nav.Link>
+                            {
+                                user && <>
+                                    <Nav.Link className='fs-5 text-white' as={Link} to="manageInventorys"><span className='nav'>Manage</span></Nav.Link>
+                                    <Nav.Link className='fs-5 text-white' as={Link} to="additems"><span className='nav'>Add-Items</span></Nav.Link>
+                                    <Nav.Link className='fs-5 text-white' as={Link} to="myitems"><span className='nav'>My-Items</span></Nav.Link>
+                                </>
+                            }
                         </Nav>
                         <Nav>{
-                            !user?
-                            <Nav.Link as={Link} to="login" className='fs-5 text-white'><span className='login'>Login <AiOutlineLogin /></span></Nav.Link>
-                            :
-                            <Nav.Link as={Link} to="login" className='fs-5 text-white'><span className='login' onClick={logout}>Logout <AiOutlineLogin /></span></Nav.Link>
-                            
+                            !user ?
+                                <Nav.Link as={Link} to="login" className='fs-5 text-white'><span className='login'>Login <AiOutlineLogin /></span></Nav.Link>
+                                :
+                                <Nav.Link as={Link} to="login" className='fs-5 text-white'><span className='login' onClick={logout}>Logout <AiOutlineLogin /></span></Nav.Link>
+
                         }
                         </Nav>
                     </Navbar.Collapse>

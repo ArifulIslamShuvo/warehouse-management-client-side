@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import UseInventory from '../../hooks/UseInventory';
 
 const ManageInventorys = () => {
@@ -15,16 +16,18 @@ const ManageInventorys = () => {
             })
             .then(res => res.json())
             .then(result => {
-                console.log(result)
                 const remaining = inventorys.filter(inventory => inventory._id !== id);
                 setInventorys(remaining); 
+                if(result.insertedId){
+                    toast("Delet successfully!");
+                }
             })
         }
     }
     return (
         <div>
             <h1 className='text-white text-center pt-5'><span className='sectionTitle'>Manage Inventorys</span></h1>
-            <div className='row g-5 p-5'>
+            <div className='row g-5 m-3'>
                 {
                     inventorys.map(manage => <div className='col-lg-4 col-12 cards' key={manage._id}>
                             <div className='caedItems'>

@@ -33,14 +33,10 @@ const Login = () => {
 ----------------------------------------------- */
     const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
-    if (user || user1) {
-        navigate('/home');
-    }
-
     if (loading || loading1) {
         return <Loading></Loading>
     }
-    if (user) {
+    if (user || user1) {
         navigate(from, { replace: true });
     }
 
