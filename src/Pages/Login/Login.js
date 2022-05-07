@@ -3,15 +3,26 @@ import './Login.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
-
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+
+    //----------handle-reset-Password---------
+    const [resetEmail, setEmail] = useState('');
+    const [sendPasswordResetEmail, sending, ] = useSendPasswordResetEmail(auth);
+   if (resetEmail) {
+            toast('Sent email');
+        }
+        else{
+          
+        }
     //----------------------------------------------------//
 
     const [
@@ -47,8 +58,7 @@ const Login = () => {
         </div>
         console.log(errorMessage);
     }
-
-
+   
 
     return (
         <div className='container w-75 my-5'>
@@ -58,7 +68,7 @@ const Login = () => {
                 <form onSubmit={handleLogin} className='pb-4'>
                     <div>
                         <div>
-                            <input type='text' name='email' id='email' placeholder='Email' autoComplete='off' />
+                            <input onChange={(e) => setEmail(e.target.value)} type='text' name='email' id='email' placeholder='Email' autoComplete='off' />
                         </div>
                     </div>
                     <div>
@@ -71,7 +81,7 @@ const Login = () => {
                         <button type='submit' className='px-4 py-2 my-2 form-submit fs-6'>Login</button>
                         <span className='signup fs-4 ' onClick={() => navigate("/signup")}>Sign up here <AiOutlineArrowRight /></span>
                     </div>
-                    <span className='signup fs-4'>Forget Password?</span>
+                    <span className='signup fs-4' onClick={async () => {await sendPasswordResetEmail(resetEmail)}}>Forget Password?</span>
                     <div className='horizontal-divider d-flex justify-content-center'>
                         <hr className='w-25 text-white' />
                         <p className='px-3 pt-1'>or</p>
