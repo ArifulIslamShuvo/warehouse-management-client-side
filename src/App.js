@@ -10,6 +10,7 @@ import ManageInventorys from './Pages/ManageInventorys/ManageInventorys';
 import MyItems from './Pages/MyItems/MyItems';
 import NotFound from './Pages/NotFound/NotFound';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Signup from './Pages/Signup/Signup';
 
@@ -50,6 +51,7 @@ function App() {
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <ToastContainer />
+      <Footer></Footer>
     </div>
   );
 }

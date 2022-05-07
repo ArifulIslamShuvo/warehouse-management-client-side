@@ -5,7 +5,7 @@ import { FcGoogle, FcOk } from "react-icons/fc";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
@@ -20,7 +20,10 @@ const Signup = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+    if(user){
+        toast('Sent Verification email');
+    }
 
 
     //------------Email-handle-----------------//

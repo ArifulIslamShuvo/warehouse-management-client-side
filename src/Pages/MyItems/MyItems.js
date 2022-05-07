@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const MyItems = () => {
     const [user] = useAuthState(auth)
-    const [items, setItems] = useState(0);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         const getItems = async () => {
@@ -40,7 +40,7 @@ const MyItems = () => {
     return (
         <div className=''>
             <h2 className=' sectionTitle text-center py-5'>Your Items: {items.length}</h2>
-            {/* <div className='w-75 mx-auto'>
+            <div className='w-75 mx-auto'>
                 {
                     items.map(item => <div key={item._id} className="d-flex align-aitems-center justify-content-between caedItems p-3 mb-4">
                         <div className=''>
@@ -59,7 +59,7 @@ const MyItems = () => {
                         </div>
                     </div>)
                 }
-            </div> */}
+            </div>
         </div>
     );
 };
