@@ -11,7 +11,7 @@ const MyItems = () => {
     useEffect(() => {
         const getItems = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/inventory?email=${email}`;
+            const url = `https://fathomless-basin-03406.herokuapp.com/inventory?email=${email}`;
             const { data } = await axios.get(url);
             setItems(data)
         }
@@ -22,7 +22,7 @@ const MyItems = () => {
     const DeletItem = id => {
         const proceed = window.confirm("Are you sure You want to delete the data");
         if(proceed){
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://fathomless-basin-03406.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

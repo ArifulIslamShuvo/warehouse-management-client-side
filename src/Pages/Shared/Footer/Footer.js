@@ -21,7 +21,7 @@ const Footer = () => {
                     <p><AiOutlineMail /> official: realfurniture102@gmail.com</p>
                 </div>
             </div>
-            <div className='text-center '>
+            <div className='text-center pb-2'>
                 <p className='fs-5'><small>copy right &copy; {new Date().getFullYear()}</small></p>
             </div>
         </footer>

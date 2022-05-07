@@ -5,30 +5,30 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const Update = () => {
     const { id } = useParams();
-    const [inventory, setInventory] = useState();
+    const [inventory, setInventory] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${id}`;
+        const url = `https://fathomless-basin-03406.herokuapp.com/inventory/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setInventory(data));
 
-    }, [id]);
+    }, [id,inventory]);
     //---------handleed-input-quantity-------
     const handleQuantity = event => {
         event.preventDefault();
         const quantity = event.target.quantity.value;
-        const newQuantity = parseInt(inventory?.quantity) + parseInt(quantity);
-        const pudateQuantity = {newQuantity};
-        console.log(pudateQuantity);
+        const newQuantity = parseInt(inventory.quantity) + parseInt(quantity);
+        const updateQuantity = {newQuantity};
+        console.log(newQuantity);
 
-        const url = `http://localhost:5000/inventory/${id}`;
+        const url = `https://fathomless-basin-03406.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
-            body: JSON.stringify(pudateQuantity)
+            body: JSON.stringify(updateQuantity),
         })
         .then(res => res.json())
         .then(data =>{
@@ -41,17 +41,17 @@ const Update = () => {
     }
 
     const deliverQuantity = ()=>{
-        const deliverd = parseInt(inventory?.quantity) - 1;
-        const  updateDeliverd = {deliverd}
-        console.log(updateDeliverd);
+        const newQuantity = parseInt(inventory.quantity) - 1;
+        const  updateQuantity = {newQuantity}
+        console.log(newQuantity);
 
-        const url = `http://localhost:5000/inventory/${id}`;
+        const url = `https://fathomless-basin-03406.herokuapp.com/inventory/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
-            body: JSON.stringify(updateDeliverd)
+            body: JSON.stringify(updateQuantity),
         })
         .then(res => res.json())
         .then(data =>{
