@@ -38,15 +38,15 @@ const MyItems = () => {
         }
     }
     return (
-        <div className=''>
-            <h2 className=' sectionTitle text-center py-5'>Your Items: {items.length}</h2>
-            <div className='w-75 mx-auto'>
+        <div className='m-4'>
+            <h2 className='sectionTitle text-center py-5'>Your Items: {items.length}</h2>
+            <div className='mx-4 row'>
                 {
-                    items.map(item => <div key={item._id} className="d-flex align-aitems-center justify-content-between caedItems p-3 mb-4">
+                    items.map(item => <div key={item._id} className="col-12 col-lg-4 caedItems">
                         <div className=''>
-                            <img style={{ width: '250px' }} src={item.img} alt="" />
+                            <img className='w-100 mx-auto' src={item.img} alt="" />
                         </div>
-                        <div className='mx-auto'>
+                        <div className='mx-auto mt-2'>
                             <h5 className='text-white text-center'>{item.name}</h5>
                             <h6 className='text-white text-center'>Price : {item.price}</h6>
                             <hr />

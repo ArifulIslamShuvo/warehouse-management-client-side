@@ -23,8 +23,8 @@ const Inventorys = () => {
                     ></Inventory>)
                 }
             </div>
-            <div className='d-flex align-aitems-center justify-content-center w-100'>
-                <button className='w-25 text-white updateBtn my-5' onClick={() => navigate(`/manageInventorys`)}>Manage Inventorys</button>
+            <div className='d-flex align-aitems-center justify-content-center p-2 w-100'>
+                <button className='text-white updateBtn my-5' onClick={() => navigate(`/manageInventorys`)}>Manage Inventorys</button>
             </div>
         </div>
     );

@@ -13,6 +13,7 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Signup from './Pages/Signup/Signup';
+import About from './Pages/Home/About/About';
 
 function App() {
   return (
