@@ -15,7 +15,7 @@ const Inventorys = () => {
     const sixinventorys = inventorys.slice(0, 6);
     return (
         <div className='mx-5'>
-            <h1 className='text-white text-center pt-5'><span className='sectionTitle'>warehouse Info</span></h1>
+            <h1 className='text-white text-center pt-5'><span className='sectionTitle'>Our Warehouse Product</span></h1>
             <div className='row g-5 p-3'>
                 {
                     sixinventorys.map(inventory => <Inventory inventory={inventory}
@@ -24,7 +24,7 @@ const Inventorys = () => {
                 }
             </div>
             <div className='d-flex align-aitems-center justify-content-center p-2 w-100'>
-                <button className='text-white updateBtn my-5' onClick={() => navigate(`/manageInventorys`)}>Manage Inventorys</button>
+                <button className=' text-white updateBtn my-5' onClick={() => navigate(`/manageInventorys`)}>Manage Inventorys</button>
             </div>
         </div>
     );

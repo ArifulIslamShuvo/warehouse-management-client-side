@@ -1,3 +1,37 @@
+# Real-Furniture Inventory-Management
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+---
+
+# Short description 
+Real is considered as a 'game-changer' in the furniture industry of Bangladesh. Carefully selected raw materials, eco-friendly business practices and a customer-centric approach have made REAL a favorite brand at home and abroad.
+
+
+---
+## Feature:
+* This website has sign up facility
+* Sign-in has the facility to sign out
+* Email verification
+* Products can be uploaded,
+* Each user's uploaded product viewed differently
+* Product can be deleted
+
+## Functionalities:
+
+* React bootstrap
+* React route 
+* React Firebase Hooks - Auth
+* React toast
+* Mongodb
+* Heroku
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

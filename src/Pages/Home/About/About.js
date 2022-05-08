@@ -3,14 +3,14 @@ import warehouse from '../../../images/warehouse-1.jpg'
 
 const About = () => {
     return (
-        <div className="row caedItems m-3">
+        <div className="row m-5 py-5">
             <h3 className='text-center py-3'>An Overview of the Furniture Industry in Bangladeshh</h3>
             <div className='col-lg-6 col-12 cards'>
-                <div className='caedItems'>
+                <div className='caedItems m-2'>
                     <img className='w-100' src={warehouse} alt="" />
                 </div>
             </div>
-            <div className='col-lg-6 col-12 cards'>
+            <div className='col-lg-6 col-12 mt-2 cards'>
                 <div>
                     <p>
                         The domestic furniture market is worth more than BDT 67 Billion (EU Technical Report). With this increasing demand for furniture in cities all over the country, there are hundreds of local stores and furniture brands competing for the consumers.
